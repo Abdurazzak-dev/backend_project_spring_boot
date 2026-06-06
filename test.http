@@ -1,0 +1,73 @@
+###
+POST http://localhost:8080/student
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Peter",
+  "surname": "Parker"
+}
+
+###
+POST http://localhost:8080/student
+Content-Type: application/json
+
+{
+  "id": 9,
+"name": "Adilet",
+"surname": "Orazgaliuly"
+}
+
+###
+GET http://localhost:8080/student
+Accept: application/json
+
+###
+DELETE http://localhost:8080/student/0
+
+###
+PUT localhost:8080/student/3
+Content-Type: application/json
+
+{
+  "name": "Hendalf",
+  "surname": "Greate"
+}
+
+###
+POST http://localhost:8080/teacher
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Askar",
+  "surname": "Bolat"
+}
+###
+PUT http://localhost:8080/student/10
+Content-Type: application/json
+
+{
+"id": 10,
+"name": "abdu",
+"surname": "kural",
+  "teacher": {
+    "id": 0,
+    "name": "Askar",
+    "surname": "Bolat"
+  }
+}
+###
+POST http://localhost:8080/student
+Content-Type: application/json
+
+{
+"id": 11,
+"name": "Torebek",
+"surname": "Askerbek",
+  "teacher": {
+    "id": 0,
+    "name": "Askar",
+    "surname": "Bolat"
+  }
+}
