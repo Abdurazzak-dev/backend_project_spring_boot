@@ -1,28 +1,26 @@
 package org.example.cruds.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
+    @JoinColumn(name = "teacher")
     private Teacher teacher;
 
     public  Student() {
     }
 
-    public Student(Long id, String name, String surname,  Long teacherId) {
-        this.id = id;
+    public Student(Long id, String name, String surname, Teacher teacher) {
         this.name = name;
         this.surname = surname;
+        this.teacher = teacher;
     }
 
     public long getId() {

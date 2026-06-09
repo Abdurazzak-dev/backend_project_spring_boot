@@ -1,14 +1,13 @@
 package org.example.cruds.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 public class Teacher {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
@@ -19,7 +18,6 @@ public class Teacher {
     public Teacher() {
     }
     public Teacher(Long id, String name, String surname) {
-        this.id = id;
         this.name = name;
         this.surname = surname;
     }
