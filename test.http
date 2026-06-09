@@ -15,7 +15,12 @@ Content-Type: application/json
 {
   "id": 9,
 "name": "Adilet",
-"surname": "Orazgaliuly"
+"surname": "Orazgaliuly",
+  "teacher": {
+    "id": 0,
+    "name": "Askar",
+    "surname": "Bolat"
+  }
 }
 
 ###
@@ -44,7 +49,7 @@ Content-Type: application/json
   "surname": "Bolat"
 }
 ###
-PUT http://localhost:8080/student/10
+POST http://localhost:8080/student/10
 Content-Type: application/json
 
 {
