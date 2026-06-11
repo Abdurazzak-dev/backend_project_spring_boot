@@ -10,20 +10,20 @@ public class Student {
     private String name;
     private String surname;
 
-    @ManyToOne
-    @JoinColumn(name = "teacher")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     public  Student() {
     }
 
-    public Student(Long id, String name, String surname, Teacher teacher) {
+    public Student(String name, String surname, Teacher teacher) {
         this.name = name;
         this.surname = surname;
         this.teacher = teacher;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

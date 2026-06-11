@@ -1,7 +1,9 @@
 package org.example.cruds.services;
 
 import org.example.cruds.models.Student;
+import org.example.cruds.models.Teacher;
 import org.example.cruds.repo.StudentRepository;
+import org.example.cruds.repo.TeacherRepository;
 import org.springframework.stereotype.Service;
 
 
@@ -9,9 +11,11 @@ import org.springframework.stereotype.Service;
 public class StudentService {
 
     private final StudentRepository repo;
+    private final TeacherRepository teacherRepository;
 
-    public StudentService(StudentRepository repo) {
+    public StudentService(StudentRepository repo, TeacherRepository teacherRepository) {
         this.repo = repo;
+        this.teacherRepository = teacherRepository;
     }
 
 
@@ -24,6 +28,12 @@ public class StudentService {
     }
 
     public Student create(Student student) {
+        if (student.getTeacher() != null && student.getTeacher().getId() != null) {
+            Long teacherId = student.getTeacher().getId();
+            Teacher managedTeacher = teacherRepository.findById(teacherId).orElseThrow(() -> new RuntimeException("Учитель с ID " + teacherId + " не найден"));
+            student.setTeacher(managedTeacher);
+        }
+
         return repo.save(student);
     }
 
