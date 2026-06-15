@@ -1,4 +1,4 @@
-package org.example.cruds.models;
+package kz.university.data.models;
 
 import jakarta.persistence.*;
 
@@ -14,21 +14,25 @@ public class Student {
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
+    @OneToOne(mappedBy = "student")
+    private StudentCard studentCard;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private StudentGroup studentGroup;
+
     public  Student() {
     }
 
-    public Student(String name, String surname, Teacher teacher) {
+    public Student(String name, String surname, Teacher teacher, StudentCard studentCard, StudentGroup studentGroup) {
         this.name = name;
         this.surname = surname;
         this.teacher = teacher;
+        this.studentGroup =  studentGroup;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -54,4 +58,21 @@ public class Student {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+
+    public StudentGroup getGroup() {
+        return studentGroup;
+    }
+
+    public void setGroup(StudentGroup studentGroup) {
+        this.studentGroup = studentGroup;
+    }
+
+    public  StudentCard getStudentCard() {
+        return studentCard;
+    }
+
+    public void setStudentCard(StudentCard studentCard) {
+        this.studentCard = studentCard;
+    }
+
 }

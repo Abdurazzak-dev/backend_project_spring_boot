@@ -1,4 +1,4 @@
-package org.example.cruds;
+package kz.university.data;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
